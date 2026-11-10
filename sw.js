@@ -1,17 +1,16 @@
 // Offline support for Tabi Spend.
 // When you change index.html, bump VERSION so phones pick up the new copy.
-const VERSION = 'tabi-spend-v2';
-const ASSETS = [
-  './',
-  './index.html',
-  './manifest.webmanifest',
-  './icons/icon-180.png',
-  './icons/icon-192.png',
-  './icons/icon-512.png',
-];
+const VERSION = 'tabi-spend-v3';
+const CORE = ['./', './index.html', './manifest.webmanifest'];
+const EXTRA = ['./icon-180.png', './icon-192.png', './icon-512.png'];
 
+// The app must cache; icons are best-effort so a missing icon can't break offline mode.
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(VERSION).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
+  e.waitUntil(
+    caches.open(VERSION)
+      .then(c => c.addAll(CORE).then(() => Promise.all(EXTRA.map(u => c.add(u).catch(() => {})))))
+      .then(() => self.skipWaiting())
+  );
 });
 
 self.addEventListener('activate', e => {
