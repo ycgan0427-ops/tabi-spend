@@ -1,0 +1,16 @@
+{
+  "name": "Tabi Spend — Japan trip expenses",
+  "short_name": "Tabi Spend",
+  "description": "Record trip spending in MYR and JPY, with budgets, cash tracking, bill splitting and tax-free refunds.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#eef0f4",
+  "theme_color": "#eef0f4",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
